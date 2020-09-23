@@ -1,17 +1,10 @@
 module.exports = (req, res) => {
-    const chunks = []
+    const [x, y] =
+        req
+            .body
+            .split('&')
+            .map(x =>
+                Number(x.split('=')[1]))
 
-    req
-        .on('data', Array.prototype.push.bind(chunks))
-        .on('end', () => {
-            const [x, y] =
-                Buffer
-                    .concat(chunks)
-                    .toString('utf8')
-                    .split('&')
-                    .map(x =>
-                        Number(x.split('=')[1]))
-
-            res.send(`<h1>Result</h1>${x} * ${y} = ${x * y}`)
-        })
+    res.send(`<h1>Result</h1>${x} * ${y} = ${x * y}`)
 }
