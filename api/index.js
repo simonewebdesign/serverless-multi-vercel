@@ -2,7 +2,7 @@ module.exports = (req, res) => {
     const chunks = []
 
     req
-        .on('data', Array.prototype.push.bind(chunks, chunk))
+        .on('data', Array.prototype.push.bind(chunks))
         .on('end', () => {
             const [x, y] =
                 Buffer
