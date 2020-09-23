@@ -1,5 +1,5 @@
 {
     "rewrites": [
-        { "source": "/", "destination": "/api/index" }
+        { "source": "/", "methods": ["POST", "GET"], "destination": "/api/index" }
     ]
 }
